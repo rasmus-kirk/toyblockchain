@@ -11,9 +11,10 @@
 			let
 				pkgs = import nixpkgs { inherit system; }; 
 				ghc = pkgs.haskellPackages.ghcWithPackages (p: [
+					p.regex-tdfa
+					p.split
 					p.curl
-					p.megaparsec
-					p.replace-megaparsec
+					p.relude
 				]);
 			in {
 				devShell = pkgs.mkShell {
