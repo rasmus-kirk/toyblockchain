@@ -15,6 +15,7 @@
 					p.split
 					p.curl
 					p.relude
+					p.network
 				]);
 			in {
 				devShell = pkgs.mkShell {

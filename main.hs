@@ -6,7 +6,9 @@ import Text.Regex.TDFA.Text ()
 import Data.List.Split
 import Control.Exception
 
-import Relude.List
+import Network.Socket
+
+--import Relude.List
 
 data MyException = InvalidUserInput deriving Show
 instance Exception MyException
@@ -21,9 +23,11 @@ data Node = Node {
 		peers        :: [Peer]
 	} deriving Show
 
-connectTo peer = do print "Can not connect as the function is not yet implemented"
+connectTo peer = do print peer --"Can not connect as the function is not yet implemented"
 
 startNetwork = do print "Can not start network as the function is not yet implemented"
+
+f = (1)+2
 
 -- Todo: Make sure that the ip is valid
 parseUserInput :: String -> Either Peer MyException
@@ -31,10 +35,10 @@ parseUserInput userInput =
 	let
 		splitUserInput = splitOn ":" userInput
 	in
-		if not $ length splitUserInput == 2 then
+		if length splitUserInput /= 2 then
 			Right InvalidUserInput
 		else
-			Left $ Peer (splitUserInput !! 0) (splitUserInput !! 1)
+			Left $ Peer (head splitUserInput) (last splitUserInput)
 
 main :: IO()
 main = do
