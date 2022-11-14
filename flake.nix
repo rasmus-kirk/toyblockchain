@@ -16,6 +16,7 @@
 					p.curl
 					p.relude
 					p.network
+					p.random
 				]);
 			in {
 				devShell = pkgs.mkShell {
